@@ -85,6 +85,9 @@
             background: linear-gradient(45deg, #f8d7da, #f5c6cb);
             color: #721c24;
             position: relative;
+            min-width: 80px; /* Made smaller */
+            padding: 2vw 3vw; /* Reduced padding */
+            font-size: clamp(0.8em, 3vw, 1.4em); /* Smaller font */
         }
         .no:hover {
             animation: escape 0.6s ease-in-out;
@@ -193,7 +196,7 @@
     </div>
     <div class="buttons">
         <button id="button1" class="yes-style" onclick="handleClick(this)">Yes, My Love! 💕</button>
-        <button id="button2" class="no-style" onclick="handleClick(this)">No, Thanks</button>
+        <button id="button2" class="no-style" onclick="handleClick(this)">No</button> <!-- Changed to "No" and made smaller -->
     </div>
     <div class="quote">
         <p>"Love is not about how many days, months, or years you have been together. Love is about how much you love each other every single day." – Unknown</p>
@@ -212,10 +215,12 @@
             if (button.textContent.includes('Yes')) {
                 sayYes();
             } else {
-                moveButton();
+                // No action on click for "No" button
                 createHeart();
             }
         }
+        
+        noButton.addEventListener('mouseover', moveButton);
         
         function moveButton() {
             const x = Math.random() * (window.innerWidth - 150);
